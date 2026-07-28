@@ -39,6 +39,7 @@ export function ProjectActions({
   return (
     <>
       <span
+        className="project-actions"
         style={{
           display: "flex",
           flexWrap: "wrap",

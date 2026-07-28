@@ -49,6 +49,10 @@ test("ships the 3D runtime and responsive scene assets", async () => {
     new URL("../app/page.tsx", import.meta.url),
     "utf8",
   );
+  const projects = await readFile(
+    new URL("../app/ProjectsShowcase.tsx", import.meta.url),
+    "utf8",
+  );
   const layout = await readFile(
     new URL("../app/layout.tsx", import.meta.url),
     "utf8",
@@ -58,7 +62,11 @@ test("ships the 3D runtime and responsive scene assets", async () => {
   assert.match(page, /data-step=\{index \+ 1\}/);
   assert.match(page, /features\.map/);
   assert.match(page, /faqs\.map/);
-  assert.match(page, /ProjectActions/);
+  assert.match(page, /ProjectsShowcase/);
+  assert.match(page, /className="services-section"/);
+  assert.match(projects, /IntersectionObserver/);
+  assert.match(projects, /ProjectActions/);
+  assert.match(projects, /loading="lazy"/);
   assert.match(layout, /apply\.B-bC7KCE\.css/);
 
   await Promise.all([
@@ -81,5 +89,26 @@ test("ships the 3D runtime and responsive scene assets", async () => {
     access(new URL("../public/projects/youtube-clone.mp4", import.meta.url)),
     access(new URL("../public/projects/orlando-dental.mp4", import.meta.url)),
     access(new URL("../public/projects/visaguard-ai.mp4", import.meta.url)),
+    access(
+      new URL(
+        "../public/projects/medilink-placeholder.webp",
+        import.meta.url,
+      ),
+    ),
+    access(
+      new URL(
+        "../public/projects/youtube-placeholder.webp",
+        import.meta.url,
+      ),
+    ),
+    access(
+      new URL("../public/projects/dental-placeholder.webp", import.meta.url),
+    ),
+    access(
+      new URL(
+        "../public/projects/visaguard-placeholder.webp",
+        import.meta.url,
+      ),
+    ),
   ]);
 });

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { AnimationRuntime } from "./AnimationRuntime";
-import { ProjectActions } from "./ProjectActions";
+import { ProjectsShowcase } from "./ProjectsShowcase";
 
 export const metadata: Metadata = {
   title: "Flovro | AI Voice Agents, Automation & Web Development",
@@ -48,60 +48,24 @@ function FlovroLogo({
 
 const steps = [
   {
-    title: "MediLink AI",
-    description: (
-      <>
-        A multi-agent healthcare triage platform that coordinates patient
-        intake, medical intelligence, logistics, and doctor-led decisions.
-        <ProjectActions
-          projectTitle="MediLink AI"
-          videoSrc="/projects/medilink-ai.mp4"
-          siteUrl="https://github.com/SydAsim/Medi-link-AI"
-        />
-      </>
-    ),
+    title: "Find the friction",
+    description:
+      "We map the calls, hand-offs, repetitive tasks, and disconnected tools slowing your team down.",
   },
   {
-    title: "YouTube Clone",
-    description: (
-      <>
-        A full-stack video platform built with React, Node.js, Express, MongoDB,
-        Cloudinary, and secure JWT authentication.
-        <ProjectActions
-          projectTitle="YouTube Clone"
-          videoSrc="/projects/youtube-clone.mp4"
-          siteUrl="https://github.com/SydAsim/Youtube-clone"
-        />
-      </>
-    ),
+    title: "Design the system",
+    description:
+      "We shape the right mix of voice AI, workflow automation, integrations, and web experience around a clear outcome.",
   },
   {
-    title: "Orlando Dental Care",
-    description: (
-      <>
-        A modern dental web experience designed to turn patient interest into
-        appointment requests through clear messaging and polished interactions.
-        <ProjectActions
-          projectTitle="Orlando Dental Care"
-          videoSrc="/projects/orlando-dental.mp4"
-          siteUrl="https://github.com/SydAsim/orlando-dental-care-v2"
-        />
-      </>
-    ),
+    title: "Build and connect",
+    description:
+      "We create the experience, connect your tools, test edge cases, and make every step dependable before launch.",
   },
   {
-    title: "VisaGuard AI",
-    description: (
-      <>
-        An AI-assisted social-risk analysis product that helps review digital
-        signals and organize evidence for clearer visa-readiness decisions.
-        <ProjectActions
-          projectTitle="VisaGuard AI"
-          videoSrc="/projects/visaguard-ai.mp4"
-          siteUrl="https://github.com/SydAsim/Visaguardai_Upwork"
-        />
-      </>
-    ),
+    title: "Launch and improve",
+    description:
+      "We release with clear reporting, monitor real usage, and refine the system as your business grows.",
   },
 ];
 
@@ -330,6 +294,15 @@ export default function Home() {
         <div data-taxi-view="home">
           <div className="top">
             <section className="hero">
+              <div className="hero__lite-visual" aria-hidden="true">
+                <span className="hero__lite-orbit hero__lite-orbit--outer" />
+                <span className="hero__lite-orbit hero__lite-orbit--inner" />
+                <span className="hero__lite-core">
+                  <i />
+                  <i />
+                  <i />
+                </span>
+              </div>
               <div className="hero__content">
                 <h1 className="hero__title">
                   <span>The New Standard </span>
@@ -349,7 +322,7 @@ export default function Home() {
               <div className="hero__scroll-btn">
                 <span>
                   <span className="hsbtn-in">
-                    scroll to explore selected projects
+                    scroll to see how we build
                   </span>
                 </span>
               </div>
@@ -357,7 +330,7 @@ export default function Home() {
 
             <div className="hero-spacer" />
 
-            <section className="flow" id="projects" aria-label="Selected projects">
+            <section className="flow" id="process" aria-label="How Flovro works">
               <div className="flow__wrapper">
                 <div className="flow__steps">
                   {steps.map((step, index) => (
@@ -390,7 +363,7 @@ export default function Home() {
               </div>
             </section>
 
-            <section className="features" id="services">
+            <section className="services-section" id="services">
               <div className="features__sticky">
                 <h2 className="features__title">
                   Built for modern businesses,
@@ -423,25 +396,19 @@ export default function Home() {
               </div>
             </section>
 
+            <ProjectsShowcase />
+
             <section className="standards">
               <div className="standards__container">
                 <div className="standards__image">
-                  <picture>
-                    <source
-                      srcSet="/_astro/apply-door.CA6YLUcA_Z1Wri67.avif"
-                      type="image/avif"
-                    />
-                    <source
-                      srcSet="/_astro/apply-door.CA6YLUcA_Z1X0VFN.webp"
-                      type="image/webp"
-                    />
-                    <img
-                      src="/_astro/apply-door.CA6YLUcA_Z12L5fE.png"
-                      alt="A coordinated team working through a complex operation"
-                      width="800"
-                      height="400"
-                    />
-                  </picture>
+                  <img
+                    src="/projects/dental-placeholder.webp"
+                    alt="Flovro connected-system interface preview"
+                    width="1200"
+                    height="800"
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </div>
                 <div className="standards__content">
                   <h2 className="standards__title">

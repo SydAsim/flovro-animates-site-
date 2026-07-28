@@ -49,12 +49,6 @@ export default function RootLayout({
   return (
     <html lang="en" className="preload">
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
-          rel="stylesheet"
-        />
         <link rel="stylesheet" href="/_astro/apply.B-bC7KCE.css" />
         <script
           dangerouslySetInnerHTML={{
@@ -66,7 +60,6 @@ export default function RootLayout({
       <body
         style={{
           backgroundColor: "#D0E1EB",
-          overflow: "hidden",
         }}
       >
         {children}
