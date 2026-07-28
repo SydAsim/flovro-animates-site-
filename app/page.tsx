@@ -1,21 +1,14 @@
 import type { Metadata } from "next";
 import { AnimationRuntime } from "./AnimationRuntime";
+import { ProjectActions } from "./ProjectActions";
 
 export const metadata: Metadata = {
-  title: "Vectr | The New Standard in Staffing",
+  title: "Flovro | AI Voice Agents, Automation & Web Development",
   description:
-    "AI-driven speed and expert curation for industrial staffing in high-consequence environments.",
+    "Flovro builds AI voice agents, intelligent automations, animated websites, and full-stack products that help businesses grow.",
 };
 
-const logoPaths = [
-  "M9.69877 11.9986H9.49841L4.39929 0H0L5.703 13.4208C6.36614 14.9841 7.90123 15.9972 9.59718 15.9972C11.2959 15.9972 12.8282 14.9841 13.4914 13.4208L19.1972 0H14.7979L9.69877 11.9986Z",
-  "M19.4286 3.99859V11.9986C19.4286 14.2081 21.2205 15.9972 23.4272 15.9972H35.4257V12.3965H23.4272V9.79753H33.8257V6.19683H23.4272V3.59788H35.4257V0H23.4272C21.2176 0 19.4286 1.79189 19.4286 3.99859Z",
-  "M44.3598 3.99859H47.5598C49.0384 3.99859 50.328 4.80282 51.0194 5.99929H55.3058C54.4169 2.54815 51.2846 0 47.5598 0H44.3598C39.9407 0 36.3598 3.58095 36.3598 8C36.3598 12.419 39.9407 16 44.3598 16H47.5598C51.2875 16 54.4198 13.4519 55.3058 10.0007H51.0194C50.328 11.1944 49.0384 12.0014 47.5598 12.0014H44.3598C42.1503 12.0014 40.3612 10.2095 40.3612 8.00282C40.3612 5.79612 42.1531 4.00423 44.3598 4.00423V3.99859Z",
-  "M56.0395 0V3.60071H62.0388V15.9972H66.0374V3.60071H72.0367V0H56.0395Z",
-  "M92.5968 5.39824C92.5968 2.41552 90.1785 0 87.1986 0H77.4011C75.1915 0 73.4025 1.79189 73.4025 3.99859V15.9972H77.4011V10.7965H84.0409L88.2003 15.9972H92.5996L88.3414 10.6751C90.7739 10.1503 92.5996 7.98871 92.5996 5.39824H92.5968ZM88.5982 5.39824C88.5982 6.39153 87.7912 7.19859 86.7979 7.19859H77.3982V3.59788H86.7979C87.7912 3.59788 88.5982 4.40494 88.5982 5.39824Z",
-];
-
-function VectrLogo({
+function FlovroLogo({
   light = false,
   className = "logo",
 }: {
@@ -25,13 +18,29 @@ function VectrLogo({
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 93 16"
+      viewBox="0 0 144 24"
       fill="none"
       className={className}
-      aria-hidden="true"
+      role="img"
+      aria-label="Flovro"
     >
-      {logoPaths.map((path) => (
-        <path key={path} d={path} fill={light ? "#FCFCFC" : "#050419"} />
+      {[
+        "M0 7H5V17H0Z",
+        "M9 2H14V22H9Z",
+        "M18 5H23V19H18Z",
+        "M32 4H45V7H36V10H44V13H36V20H32Z",
+        "M49 4H53V17H61V20H49Z",
+        "M65 4H79V20H65ZM69 7V17H75V7Z",
+        "M83 4H87L91 15L95 4H99L93 20H89Z",
+        "M103 4H112C116 4 118 6 118 10C118 12.5 116.8 14.2 114.6 15L119 20H114L110.5 15.5H107V20H103ZM107 7V12.5H111.5C113.2 12.5 114 11.5 114 9.75C114 7.9 113.1 7 111.5 7Z",
+        "M123 4H137V20H123ZM127 7V17H133V7Z",
+      ].map((path) => (
+        <path
+          key={path}
+          d={path}
+          fill={light ? "#FCFCFC" : "#050419"}
+          fillRule="evenodd"
+        />
       ))}
     </svg>
   );
@@ -39,80 +48,110 @@ function VectrLogo({
 
 const steps = [
   {
-    title: "Activation, simplified",
+    title: "MediLink AI",
     description: (
       <>
-        One call triggers mobilization.
-        <br /> Your requirements: craft, count, and start date route directly to
-        our verified crews. No hand-offs. No escalations. Just boots on the
-        ground in minutes.
+        A multi-agent healthcare triage platform that coordinates patient
+        intake, medical intelligence, logistics, and doctor-led decisions.
+        <ProjectActions
+          projectTitle="MediLink AI"
+          videoSrc="/projects/medilink-ai.mp4"
+          siteUrl="https://github.com/SydAsim/Medi-link-AI"
+        />
       </>
     ),
   },
   {
-    title: "Cleared to count",
-    description:
-      "Our team handles all screening and verification before dispatch. Compliance, background, certifications, and fitness-for-duty — we enforce a zero-fail model to guarantee every worker clears the gate on Day 1.",
+    title: "YouTube Clone",
+    description: (
+      <>
+        A full-stack video platform built with React, Node.js, Express, MongoDB,
+        Cloudinary, and secure JWT authentication.
+        <ProjectActions
+          projectTitle="YouTube Clone"
+          videoSrc="/projects/youtube-clone.mp4"
+          siteUrl="https://github.com/SydAsim/Youtube-clone"
+        />
+      </>
+    ),
   },
   {
-    title: "Proven field match",
-    description:
-      "We don't just provide available workers. We deploy proven crews. By filtering for past performance, role fit, and reliability, we deliver teams engineered for endurance — ensuring your project stays fully manned from first break to completion.",
+    title: "Orlando Dental Care",
+    description: (
+      <>
+        A modern dental web experience designed to turn patient interest into
+        appointment requests through clear messaging and polished interactions.
+        <ProjectActions
+          projectTitle="Orlando Dental Care"
+          videoSrc="/projects/orlando-dental.mp4"
+          siteUrl="https://github.com/SydAsim/orlando-dental-care-v2"
+        />
+      </>
+    ),
   },
   {
-    title: "Seamless arrival",
-    description:
-      'We manage the "last mile" of mobilization. Every crew arrives site-ready with finalized reporting details. With real-time arrival monitoring and active coordination, we ensure your shift starts on time, even when field conditions shift.',
+    title: "VisaGuard AI",
+    description: (
+      <>
+        An AI-assisted social-risk analysis product that helps review digital
+        signals and organize evidence for clearer visa-readiness decisions.
+        <ProjectActions
+          projectTitle="VisaGuard AI"
+          videoSrc="/projects/visaguard-ai.mp4"
+          siteUrl="https://github.com/SydAsim/Visaguardai_Upwork"
+        />
+      </>
+    ),
   },
 ];
 
 const features = [
   {
     icon: "/icons/features/rapid-activation.svg",
-    title: "Rapid Activation",
+    title: "AI Voice Agents",
     description:
-      "We believe speed is a skill. Our platform uses machine learning to turn staffing into instant logistics, deploying a precisely matched workforce the moment demand strikes.",
+      "Inbound and outbound AI calling agents for lead qualification, customer support, booking, reminders, collections, and after-hours coverage.",
   },
   {
     icon: "/icons/features/rigorous-selection.svg",
-    title: "Rigorous Selection",
+    title: "Workflow Automation",
     description:
-      "Geography is a core metric. Our engine uses AI to find and contact qualified talent within defined radii, securing top local contractors first, filtered for cost and skill.",
+      "Reliable n8n workflows that connect CRMs, calendars, email, WhatsApp, databases, APIs, and the tools your team already uses.",
   },
   {
     icon: "/icons/features/verified.svg",
-    title: "100% Verified Before Arrival",
+    title: "Animated Web Experiences",
     description:
-      "We use a Zero-Trust verification model with secure API integrations to run automated background checks and drug testing, blocking dispatch access until fully cleared.",
+      "Modern, responsive websites with purposeful motion, strong visual storytelling, and clear conversion paths for growing businesses.",
   },
   {
     icon: "/icons/features/controlled-outcomes.svg",
-    title: "Controlled Outcomes",
+    title: "Full-Stack Products",
     description:
-      "We guarantee controlled outcomes by managing staffing's biggest variables—cost and compliance—prioritizing local mobilization and automating safety for every dispatch.",
+      "Custom web applications built with practical architecture, secure integrations, scalable backends, and business-ready user experiences.",
   },
 ];
 
 const faqs = [
   {
-    question: "How fast can crews be mobilized?",
+    question: "What can Flovro automate?",
     answer:
-      "We move at the speed of your schedule. Our platform maintains a deep network of verified industrial craft, eliminating the weeks wasted in traditional hiring cycles. One call activates our mobilization engine to source and deploy precision-matched crews in hours, not days, ensuring your most critical paths remain fully manned.",
+      "Flovro automates customer calls, lead qualification, appointment booking, reminders, follow-ups, support, CRM updates, dispatch, collections, internal hand-offs, reporting, and other repetitive business workflows.",
   },
   {
-    question: "How do you handle compliance & background checks?",
+    question: "Can Flovro connect with our current tools?",
     answer:
-      "We use a Zero-Fail Compliance model. Before a worker is even cleared for dispatch, our system automates the verification of background checks, drug testing (FFD), and site-specific certifications including nuclear grade requirements. We block access to the gate for anyone who isn't 100% cleared, ensuring your badging office has zero headaches on Day 1.",
+      "Yes. We can integrate voice agents and automations with CRMs, calendars, Google Sheets, email, WhatsApp, databases, payment tools, and most platforms that provide an API or webhook.",
   },
   {
-    question: "What is the coverage during outages?",
+    question: "Does Flovro work with one specific industry?",
     answer:
-      'We provide 24/7 active coordination to match the 24/7 nature of an outage. Our coverage spans the full range of outage craft: from general laborers and painters to specialized repairs and schedulers. More importantly, we manage the "last mile" of arrival, monitoring deployments in real-time to ensure your night and day shifts remain fully manned, even when field conditions shift.',
+      "No. Flovro works across industries, including home services, healthcare, dental, real estate, e-commerce, professional services, and growing teams with repeatable customer or operational workflows.",
   },
   {
-    question: "How does Vectr differ from traditional staffing vendors?",
+    question: "Can you build both the automation and the website?",
     answer:
-      "Traditional vendors are reactive; Vectr is an operational engine. While legacy agencies rely on manual resumes and 'available' warm bodies, we use intelligent workflows and expert curation to deliver field-validated precision. We don't just find people who are looking for work; we deploy proven crews that are engineered for the high-tempo grind of a critical path environment.",
+      "Yes. Flovro can design the customer-facing website or web application, build the backend workflow, connect the required tools, and add an AI voice or messaging layer as one complete system.",
   },
 ];
 
@@ -170,17 +209,18 @@ function Loader() {
           <mask id="arrow-mask">
             <path
               className="arrow-mask-line"
-              d="M14 14L47 47M14 82L47 49M0 48H56"
+              d="M22 29V67M48 15V81M74 23V73"
               stroke="white"
-              strokeWidth="16"
+              strokeWidth="14"
+              strokeLinecap="round"
             />
           </mask>
         </defs>
-        <path
-          mask="url(#arrow-mask)"
-          d="M54 42a8 8 0 0 1 0 12L20 88 8 76l20-20H0V40h29L8 20 20 8l34 34Z"
-          fill="#0F32DC"
-        />
+        <g mask="url(#arrow-mask)" fill="#0F32DC">
+          <rect x="15" y="28" width="14" height="40" rx="7" />
+          <rect x="41" y="14" width="14" height="68" rx="7" />
+          <rect x="67" y="22" width="14" height="52" rx="7" />
+        </g>
         <rect id="cube_01" x="40" y="0" width="16" height="16" fill="#0F32DC" />
         <rect
           id="cube_02"
@@ -215,21 +255,21 @@ export default function Home() {
 
       <header>
         <nav className="header__nav-left" aria-label="Primary navigation">
-          <a href="https://www.vectrfl.com/industries">Our Industries</a>
-          <a href="https://www.vectrfl.com/our-mission">Our Mission</a>
+          <a href="#services">Services</a>
+          <a href="#projects">Projects</a>
         </nav>
         <div className="header__logo">
-          <a href="/" className="header__logo_link" aria-label="Vectr Home">
-            <VectrLogo />
+          <a href="/" className="header__logo_link" aria-label="Flovro Home">
+            <FlovroLogo />
           </a>
         </div>
         <nav className="header__nav-right" aria-label="Actions">
           <div className="header__ctas">
-            <Pill href="https://www.vectrfl.com/apply" variant="glass">
-              Apply
+            <Pill href="#projects" variant="glass">
+              Our Work
             </Pill>
-            <Pill href="https://www.vectrfl.com/request-crew">
-              Request Crews
+            <Pill href="mailto:syedasim2021@gmail.com?subject=Flovro%20project%20inquiry">
+              Start a Project
             </Pill>
           </div>
           <button
@@ -250,8 +290,8 @@ export default function Home() {
           <div className="mobile-nav__panel-bg" />
           <div className="mobile-nav__panel">
             <div className="mobile-nav__header">
-              <a href="/" className="mobile-nav__logo" aria-label="Vectr Home">
-                <VectrLogo />
+              <a href="/" className="mobile-nav__logo" aria-label="Flovro Home">
+                <FlovroLogo />
               </a>
               <button
                 className="mobile-nav__close"
@@ -264,21 +304,21 @@ export default function Home() {
             </div>
             <ul className="mobile-nav__list">
               <li className="mobile-nav__item">
-                <a href="https://www.vectrfl.com/industries">Our Industries</a>
+                <a href="#services">Services</a>
               </li>
               <li className="mobile-nav__item">
-                <a href="https://www.vectrfl.com/our-mission">Our Mission</a>
+                <a href="#projects">Projects</a>
               </li>
             </ul>
             <div className="mobile-nav__ctas">
               <div className="mncta">
-                <Pill href="https://www.vectrfl.com/apply" variant="glass">
-                  Apply
+                <Pill href="#projects" variant="glass">
+                  Our Work
                 </Pill>
               </div>
               <div className="mncta">
-                <Pill href="https://www.vectrfl.com/request-crew">
-                  Request Crews
+                <Pill href="mailto:syedasim2021@gmail.com?subject=Flovro%20project%20inquiry">
+                  Start a Project
                 </Pill>
               </div>
             </div>
@@ -293,23 +333,23 @@ export default function Home() {
               <div className="hero__content">
                 <h1 className="hero__title">
                   <span>The New Standard </span>
-                  <span>in Staffing</span>
+                  <span>in Business Automation</span>
                 </h1>
                 <p className="hero__subtitle">
                   <span>
-                    AI driven speed. Expert curation.
+                    AI voice agents. Intelligent workflows.
                     <br className="sp" />
                   </span>
                   <span>
-                    We mobilize verified crews to protect your schedule and your
-                    bottom line in high-consequence environments.
+                    We build connected systems and animated digital experiences
+                    that help businesses respond faster, work smarter, and grow.
                   </span>
                 </p>
               </div>
               <div className="hero__scroll-btn">
                 <span>
                   <span className="hsbtn-in">
-                    scroll to discover our process
+                    scroll to explore selected projects
                   </span>
                 </span>
               </div>
@@ -317,7 +357,7 @@ export default function Home() {
 
             <div className="hero-spacer" />
 
-            <section className="flow">
+            <section className="flow" id="projects" aria-label="Selected projects">
               <div className="flow__wrapper">
                 <div className="flow__steps">
                   {steps.map((step, index) => (
@@ -350,11 +390,11 @@ export default function Home() {
               </div>
             </section>
 
-            <section className="features">
+            <section className="features" id="services">
               <div className="features__sticky">
                 <h2 className="features__title">
-                  Designed for today&apos;s operations,
-                  <br className="pc" /> beyond legacy staffing workflows.
+                  Built for modern businesses,
+                  <br className="pc" /> beyond disconnected tools and manual work.
                 </h2>
                 <div className="features__grid">
                   {features.map((feature) => (
@@ -397,7 +437,7 @@ export default function Home() {
                     />
                     <img
                       src="/_astro/apply-door.CA6YLUcA_Z12L5fE.png"
-                      alt="Workers in safety vests coordinating at industrial site"
+                      alt="A coordinated team working through a complex operation"
                       width="800"
                       height="400"
                     />
@@ -405,21 +445,18 @@ export default function Home() {
                 </div>
                 <div className="standards__content">
                   <h2 className="standards__title">
-                    <span>Nuclear-grade </span>
-                    <span>standards across </span>
-                    <span>every site.</span>
+                    <span>Business-ready </span>
+                    <span>systems across </span>
+                    <span>every touchpoint.</span>
                   </h2>
                   <p className="standards__description">
-                    Modeled on nuclear-grade environments, our process enforces
-                    badge compliance, protected timelines and zero-error
-                    tolerance.
+                    From the first customer call to the final CRM update, we
+                    design every interaction to be clear, dependable, and ready
+                    to scale.
                   </p>
                   <div className="flx">
-                    <Pill
-                      href="https://www.vectrfl.com/industries"
-                      variant="dark"
-                    >
-                      Explore our industries
+                    <Pill href="#projects" variant="dark">
+                      Explore our projects
                     </Pill>
                   </div>
                 </div>
@@ -430,7 +467,8 @@ export default function Home() {
               <div className="faq__container">
                 <div className="faq__left">
                   <h2 className="faq__title">
-                    How we work and how we deliver industrial-grade staffing.
+                    How Flovro turns business friction into connected,
+                    intelligent systems.
                   </h2>
                 </div>
                 <div className="faq_split_bar" />
@@ -463,17 +501,17 @@ export default function Home() {
               </div>
             </section>
 
-            <section className="cta-section">
+            <section className="cta-section" id="contact">
               <h2 className="cta-section__title">
-                <span>Staff your outage with fast response, </span>
-                <span>and crews you can rely on.</span>
+                <span>Respond faster, automate the repetitive, </span>
+                <span>and build a business ready to scale.</span>
               </h2>
               <div className="flx">
                 <Pill
-                  href="https://www.vectrfl.com/request-crew"
+                  href="mailto:syedasim2021@gmail.com?subject=Flovro%20discovery%20call"
                   variant="light"
                 >
-                  Request Crews
+                  Book a Discovery Call
                 </Pill>
               </div>
             </section>
@@ -485,14 +523,14 @@ export default function Home() {
       <footer className="footer">
         <nav className="footer-nav" aria-label="Footer navigation">
           {[
-            ["Our Industries", "industries"],
-            ["Our Mission", "our-mission"],
-            ["Apply", "apply"],
-          ].map(([label, route]) => (
+            ["Services", "#services"],
+            ["Projects", "#projects"],
+            ["Contact", "#contact"],
+          ].map(([label, href]) => (
             <a
-              href={`https://www.vectrfl.com/${route}`}
+              href={href}
               className="footer-nav-btn"
-              key={route}
+              key={href}
             >
               <span className="footer-nav-btn__bg" />
               <span className="footer-nav-btn__label">{label}</span>
@@ -512,29 +550,16 @@ export default function Home() {
           ))}
         </nav>
         <div className="footer__bottom">
-          <VectrLogo light className="logo footer__logo" />
+          <FlovroLogo light className="logo footer__logo" />
           <div className="footer__meta">
-            <p className="footer__copyright">© 2026 Vectr, Inc.</p>
+            <p className="footer__copyright">© 2026 Flovro.</p>
             <a
-              href="https://www.vectrfl.com/privacy"
+              href="mailto:syedasim2021@gmail.com"
               className="footer__privacy"
             >
-              Privacy Policy
+              Contact
             </a>
-            <a
-              href="https://www.vectrfl.com/terms"
-              className="footer__privacy"
-            >
-              ToS
-            </a>
-            <a
-              href="https://utsubo.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="footer__credit"
-            >
-              Made by Utsubo
-            </a>
+            <p className="footer__credit">AI · Automation · Web</p>
           </div>
         </div>
       </footer>

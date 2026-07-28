@@ -9,10 +9,12 @@ export async function generateMetadata(): Promise<Metadata> {
   const isLocalHost =
     host?.startsWith("localhost") || host?.startsWith("127.0.0.1");
   const protocol = isLocalHost ? "http" : (forwardedProtocol ?? "https");
-  const origin = host ? `${protocol}://${host}` : "https://www.vectrfl.com";
-  const title = "Vectr | The New Standard in Staffing";
+  const origin = host
+    ? `${protocol}://${host}`
+    : "https://vectr-staffing-clone.syedasim2021.chatgpt.site";
+  const title = "Flovro | AI Voice Agents, Automation & Web Development";
   const description =
-    "AI-driven speed and expert curation for industrial staffing in high-consequence environments.";
+    "Flovro builds AI voice agents, intelligent automations, animated websites, and full-stack products that help businesses grow.";
   const socialImage = `${origin}/og.png`;
 
   return {
@@ -20,8 +22,8 @@ export async function generateMetadata(): Promise<Metadata> {
     description,
     icons: {
       icon: "/favicon.svg",
-      shortcut: "/icons/favicon-32x32.png",
-      apple: "/icons/apple-touch-icon.png",
+      shortcut: "/favicon.svg",
+      apple: "/favicon.svg",
     },
     openGraph: {
       title,

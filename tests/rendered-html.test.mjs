@@ -23,18 +23,23 @@ async function render() {
   );
 }
 
-test("server-renders the complete Vectr homepage", async () => {
+test("server-renders the complete Flovro homepage", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /<title>Vectr \| The New Standard in Staffing<\/title>/i);
+  assert.match(
+    html,
+    /<title>Flovro \| AI Voice Agents, Automation &amp; Web Development<\/title>/i,
+  );
   assert.match(html, /The New Standard/);
-  assert.match(html, /Activation, simplified/);
-  assert.match(html, /Nuclear-grade[\s\S]{0,200}standards across/);
-  assert.match(html, /How we work and how we deliver industrial-grade staffing/);
-  assert.match(html, /Staff your outage with fast response/);
+  assert.match(html, /MediLink AI/);
+  assert.match(html, /Business-ready[\s\S]{0,200}systems across/);
+  assert.match(html, /How Flovro turns business friction/);
+  assert.match(html, /Respond faster, automate the repetitive/);
+  assert.match(html, /Watch video/);
+  assert.match(html, /Visit site/);
   assert.match(html, /<div id="app"><\/div>/i);
   assert.match(html, /AnimationRuntime-[^"]+\.js/);
 });
@@ -53,6 +58,7 @@ test("ships the 3D runtime and responsive scene assets", async () => {
   assert.match(page, /data-step=\{index \+ 1\}/);
   assert.match(page, /features\.map/);
   assert.match(page, /faqs\.map/);
+  assert.match(page, /ProjectActions/);
   assert.match(layout, /apply\.B-bC7KCE\.css/);
 
   await Promise.all([
@@ -71,5 +77,9 @@ test("ships the 3D runtime and responsive scene assets", async () => {
       ),
     ),
     access(new URL("../public/og.png", import.meta.url)),
+    access(new URL("../public/projects/medilink-ai.mp4", import.meta.url)),
+    access(new URL("../public/projects/youtube-clone.mp4", import.meta.url)),
+    access(new URL("../public/projects/orlando-dental.mp4", import.meta.url)),
+    access(new URL("../public/projects/visaguard-ai.mp4", import.meta.url)),
   ]);
 });
