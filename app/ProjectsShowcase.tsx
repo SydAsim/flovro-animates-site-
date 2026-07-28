@@ -10,9 +10,8 @@ const projects = [
     description:
       "A focused product experience shaped around clarity, confidence, and deliberate interaction.",
     href: "https://vaultshielddsad.vercel.app/",
+    image: "/projects/screenshots/vaultshield.jpg",
     accent: "#4667ff",
-    accentTwo: "#7ce7ff",
-    code: "VS",
   },
   {
     title: "Agency Site",
@@ -20,9 +19,8 @@ const projects = [
     description:
       "An expressive agency presence with responsive structure, clear messaging, and purposeful motion.",
     href: "https://agency-site-chi-bice.vercel.app/",
+    image: "/projects/screenshots/agency-site.jpg",
     accent: "#f55bcb",
-    accentTwo: "#755cff",
-    code: "AS",
   },
   {
     title: "Logoipsum",
@@ -30,9 +28,8 @@ const projects = [
     description:
       "A bold brand presentation built around typography, visual rhythm, and direct calls to action.",
     href: "https://logoipsum-9u1i.vercel.app/",
+    image: "/projects/screenshots/logoipsum.jpg",
     accent: "#ffb54c",
-    accentTwo: "#ff5f6d",
-    code: "LI",
   },
   {
     title: "Orlando Dental Care",
@@ -40,9 +37,8 @@ const projects = [
     description:
       "A modern dental experience that makes services easy to understand and appointments easy to reach.",
     href: "https://orlando-dental-care-one.vercel.app/",
+    image: "/projects/screenshots/orlando-dental.jpg",
     accent: "#54d4c8",
-    accentTwo: "#83a8ff",
-    code: "OD",
   },
   {
     title: "Lumors",
@@ -50,9 +46,8 @@ const projects = [
     description:
       "An atmospheric digital showcase balancing visual storytelling with a clean, responsive interface.",
     href: "https://lumors.vercel.app/",
+    image: "/projects/screenshots/lumors.jpg",
     accent: "#d7ff69",
-    accentTwo: "#48d7a0",
-    code: "LU",
   },
   {
     title: "Terraelix",
@@ -60,9 +55,8 @@ const projects = [
     description:
       "A refined landing experience with layered content, tactile motion, and strong visual hierarchy.",
     href: "https://terraelix-two.vercel.app/",
+    image: "/projects/screenshots/terraelix.jpg",
     accent: "#d98b5f",
-    accentTwo: "#89b582",
-    code: "TE",
   },
   {
     title: "Animated Gold",
@@ -70,9 +64,8 @@ const projects = [
     description:
       "A motion-first web experiment using depth, pacing, and polished transitions to guide attention.",
     href: "https://animated-gold.vercel.app/",
+    image: "/projects/screenshots/animated-gold.jpg",
     accent: "#ffd35a",
-    accentTwo: "#ff8a3d",
-    code: "AG",
   },
   {
     title: "Orbis Bay",
@@ -80,15 +73,13 @@ const projects = [
     description:
       "A composed, responsive experience with immersive presentation and a premium visual finish.",
     href: "https://orbis-bay-tau.vercel.app/",
+    image: "/projects/screenshots/orbis-bay.jpg",
     accent: "#5cb8ff",
-    accentTwo: "#805bff",
-    code: "OB",
   },
 ] as const;
 
 type ProjectStyle = CSSProperties & {
   "--project-accent": string;
-  "--project-accent-two": string;
 };
 
 export function ProjectsShowcase() {
@@ -170,7 +161,6 @@ export function ProjectsShowcase() {
               const distance = Math.abs(offset);
               const style: ProjectStyle = {
                 "--project-accent": project.accent,
-                "--project-accent-two": project.accentTwo,
                 transform: `translate3d(${offset * 64}%, ${distance * 28}px, ${
                   distance * -180
                 }px) rotateY(${offset * -11}deg) scale(${
@@ -196,10 +186,16 @@ export function ProjectsShowcase() {
                     <p>flovro / {project.title.toLowerCase().replaceAll(" ", "-")}</p>
                   </div>
                   <div className="project-card__visual">
-                    <span className="project-card__glow" />
-                    <span className="project-card__grid" />
-                    <span className="project-card__code">{project.code}</span>
-                    <span className="project-card__wordmark">{project.title}</span>
+                    <img
+                      className="project-card__image"
+                      src={project.image}
+                      alt={`${project.title} website homepage`}
+                      width="1363"
+                      height="936"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <span className="project-card__image-shade" />
                   </div>
                   <div className="project-card__footer">
                     <div>

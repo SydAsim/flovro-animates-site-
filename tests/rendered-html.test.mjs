@@ -76,6 +76,12 @@ test("ships the 3D runtime and responsive scene assets", async () => {
   assert.match(projects, /https:\/\/vaultshielddsad\.vercel\.app\//);
   assert.match(projects, /https:\/\/orbis-bay-tau\.vercel\.app\//);
   assert.equal((projects.match(/href: "https:\/\//g) ?? []).length, 8);
+  assert.equal(
+    (projects.match(/image: "\/projects\/screenshots\//g) ?? []).length,
+    8,
+  );
+  assert.match(projects, /loading="lazy"/);
+  assert.match(projects, /decoding="async"/);
   assert.match(layout, /apply\.B-bC7KCE\.css/);
   assert.match(runtime, /flovro-interface-ready/);
   assert.match(runtime, /MutationObserver/);
@@ -101,5 +107,41 @@ test("ships the 3D runtime and responsive scene assets", async () => {
     access(new URL("../public/projects/youtube-clone.mp4", import.meta.url)),
     access(new URL("../public/projects/orlando-dental.mp4", import.meta.url)),
     access(new URL("../public/projects/visaguard-ai.mp4", import.meta.url)),
+    access(
+      new URL(
+        "../public/projects/screenshots/vaultshield.jpg",
+        import.meta.url,
+      ),
+    ),
+    access(
+      new URL(
+        "../public/projects/screenshots/agency-site.jpg",
+        import.meta.url,
+      ),
+    ),
+    access(
+      new URL("../public/projects/screenshots/logoipsum.jpg", import.meta.url),
+    ),
+    access(
+      new URL(
+        "../public/projects/screenshots/orlando-dental.jpg",
+        import.meta.url,
+      ),
+    ),
+    access(
+      new URL("../public/projects/screenshots/lumors.jpg", import.meta.url),
+    ),
+    access(
+      new URL("../public/projects/screenshots/terraelix.jpg", import.meta.url),
+    ),
+    access(
+      new URL(
+        "../public/projects/screenshots/animated-gold.jpg",
+        import.meta.url,
+      ),
+    ),
+    access(
+      new URL("../public/projects/screenshots/orbis-bay.jpg", import.meta.url),
+    ),
   ]);
 });
