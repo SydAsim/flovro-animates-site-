@@ -70,7 +70,7 @@ test("ships the 3D runtime and responsive scene assets", async () => {
   assert.match(layout, /apply\.B-bC7KCE\.css/);
   assert.match(runtime, /flovro-interface-ready/);
   assert.match(runtime, /MutationObserver/);
-  assert.match(runtime, /setTimeout\(revealInterface, 3800\)/);
+  assert.match(runtime, /setTimeout\(revealInterface, 700\)/);
 
   await Promise.all([
     access(new URL("../public/glb/nuclear_staffing_noHumans.glb", import.meta.url)),
