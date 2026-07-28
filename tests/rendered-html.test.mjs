@@ -35,6 +35,7 @@ test("server-renders the complete Flovro homepage", async () => {
   );
   assert.match(html, /The New Standard/);
   assert.match(html, /MediLink AI/);
+  assert.match(html, /class="services-section"/);
   assert.match(html, /Business-ready[\s\S]{0,200}systems across/);
   assert.match(html, /How Flovro turns business friction/);
   assert.match(html, /Respond faster, automate the repetitive/);
@@ -57,6 +58,8 @@ test("ships the 3D runtime and responsive scene assets", async () => {
   assert.match(page, /data-taxi-view="home"/);
   assert.match(page, /data-step=\{index \+ 1\}/);
   assert.match(page, /features\.map/);
+  assert.match(page, /className="services-section"/);
+  assert.doesNotMatch(page, /className="features"/);
   assert.match(page, /faqs\.map/);
   assert.match(page, /ProjectActions/);
   assert.match(layout, /apply\.B-bC7KCE\.css/);

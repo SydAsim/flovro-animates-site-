@@ -390,7 +390,7 @@ export default function Home() {
               </div>
             </section>
 
-            <section className="features" id="services">
+            <section className="services-section" id="services">
               <div className="features__sticky">
                 <h2 className="features__title">
                   Built for modern businesses,
