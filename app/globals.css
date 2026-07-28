@@ -37,6 +37,11 @@ body {
 
 #loader {
   background: #d0e1eb;
+  opacity: 1;
+  visibility: visible;
+  transition:
+    opacity 420ms cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 0s linear 420ms;
 }
 
 #loader .loader__ellipse ellipse {
@@ -45,8 +50,53 @@ body {
   stroke-width: 1;
 }
 
-#loader.hide {
+#loader .loader__logo--runtime {
+  position: absolute;
+  opacity: 0;
   pointer-events: none;
+}
+
+#loader .loader__brand {
+  position: relative;
+  z-index: 2;
+  width: clamp(156px, 16vw, 224px);
+  height: auto;
+  opacity: 0;
+  transform: translateY(8px) scale(0.96);
+  animation: flovro-loader-in 650ms cubic-bezier(0.16, 1, 0.3, 1) 120ms
+    forwards;
+}
+
+#loader.hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.flovro-interface-ready header {
+  transform: translateZ(0);
+}
+
+.flovro-interface-ready .hero .hero__title,
+.flovro-interface-ready .hero .hero__subtitle {
+  opacity: 1;
+  transform: perspective(1000px) translate(0) translateZ(0) rotateY(0)
+    rotateX(0);
+}
+
+.flovro-interface-ready .hero .hero__scroll-btn > span::after {
+  transform: scaleX(1) translateZ(0);
+}
+
+.flovro-interface-ready .hero .hsbtn-in {
+  transform: translateZ(0);
+}
+
+@keyframes flovro-loader-in {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .services-section {

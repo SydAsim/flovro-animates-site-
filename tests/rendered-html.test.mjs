@@ -41,6 +41,7 @@ test("server-renders the complete Flovro homepage", async () => {
   assert.match(html, /Respond faster, automate the repetitive/);
   assert.match(html, /Watch video/);
   assert.match(html, /Visit site/);
+  assert.match(html, /class="loader__brand"/);
   assert.match(html, /<div id="app"><\/div>/i);
   assert.match(html, /AnimationRuntime-[^"]+\.js/);
 });
@@ -54,6 +55,10 @@ test("ships the 3D runtime and responsive scene assets", async () => {
     new URL("../app/layout.tsx", import.meta.url),
     "utf8",
   );
+  const runtime = await readFile(
+    new URL("../app/AnimationRuntime.tsx", import.meta.url),
+    "utf8",
+  );
 
   assert.match(page, /data-taxi-view="home"/);
   assert.match(page, /data-step=\{index \+ 1\}/);
@@ -63,6 +68,9 @@ test("ships the 3D runtime and responsive scene assets", async () => {
   assert.match(page, /faqs\.map/);
   assert.match(page, /ProjectActions/);
   assert.match(layout, /apply\.B-bC7KCE\.css/);
+  assert.match(runtime, /flovro-interface-ready/);
+  assert.match(runtime, /MutationObserver/);
+  assert.match(runtime, /setTimeout\(revealInterface, 3800\)/);
 
   await Promise.all([
     access(new URL("../public/glb/nuclear_staffing_noHumans.glb", import.meta.url)),

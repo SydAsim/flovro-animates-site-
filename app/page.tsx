@@ -203,7 +203,7 @@ function Loader() {
         height="96"
         viewBox="0 0 96 96"
         fill="none"
-        className="loader__logo"
+        className="loader__logo loader__logo--runtime"
       >
         <defs>
           <mask id="arrow-mask">
@@ -243,6 +243,7 @@ function Loader() {
         />
         <rect id="cube_05" x="40" y="80" width="16" height="16" fill="#0F32DC" />
       </svg>
+      <FlovroLogo className="loader__brand" />
     </div>
   );
 }
