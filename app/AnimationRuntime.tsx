@@ -37,9 +37,9 @@ export function AnimationRuntime() {
       attributeFilter: ["class"],
     });
 
-    // Keep only a very short branded beat while the 3D scene initializes
-    // behind the interface.
-    const revealFallback = window.setTimeout(revealInterface, 700);
+    // The 3D runtime controls the cinematic entrance. This guard only prevents
+    // a slow GPU or model load from leaving visitors on an empty blue screen.
+    const revealFallback = window.setTimeout(revealInterface, 3800);
 
     const existing = document.querySelector<HTMLScriptElement>(
       `script[src="${runtimeSrc}"]`,
