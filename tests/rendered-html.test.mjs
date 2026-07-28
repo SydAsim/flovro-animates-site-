@@ -34,13 +34,14 @@ test("server-renders the complete Flovro homepage", async () => {
     /<title>Flovro \| AI Voice Agents, Automation &amp; Web Development<\/title>/i,
   );
   assert.match(html, /The New Standard/);
-  assert.match(html, /MediLink AI/);
+  assert.match(html, /Eight ideas, built to move/);
+  assert.match(html, /VaultShield/);
+  assert.match(html, /Orbis Bay/);
   assert.match(html, /class="services-section"/);
   assert.match(html, /Business-ready[\s\S]{0,200}systems across/);
   assert.match(html, /How Flovro turns business friction/);
   assert.match(html, /Respond faster, automate the repetitive/);
-  assert.match(html, /Watch video/);
-  assert.match(html, /Visit site/);
+  assert.match(html, /Visit live site/);
   assert.match(html, /class="loader__brand"/);
   assert.match(html, /<div id="app"><\/div>/i);
   assert.match(html, /AnimationRuntime-[^"]+\.js/);
@@ -59,6 +60,10 @@ test("ships the 3D runtime and responsive scene assets", async () => {
     new URL("../app/AnimationRuntime.tsx", import.meta.url),
     "utf8",
   );
+  const projects = await readFile(
+    new URL("../app/ProjectsShowcase.tsx", import.meta.url),
+    "utf8",
+  );
 
   assert.match(page, /data-taxi-view="home"/);
   assert.match(page, /data-step=\{index \+ 1\}/);
@@ -66,7 +71,11 @@ test("ships the 3D runtime and responsive scene assets", async () => {
   assert.match(page, /className="services-section"/);
   assert.doesNotMatch(page, /className="features"/);
   assert.match(page, /faqs\.map/);
-  assert.match(page, /ProjectActions/);
+  assert.match(page, /ProjectsShowcase/);
+  assert.match(page, /id="hero-journey"/);
+  assert.match(projects, /https:\/\/vaultshielddsad\.vercel\.app\//);
+  assert.match(projects, /https:\/\/orbis-bay-tau\.vercel\.app\//);
+  assert.equal((projects.match(/href: "https:\/\//g) ?? []).length, 8);
   assert.match(layout, /apply\.B-bC7KCE\.css/);
   assert.match(runtime, /flovro-interface-ready/);
   assert.match(runtime, /MutationObserver/);

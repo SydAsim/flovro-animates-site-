@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { AnimationRuntime } from "./AnimationRuntime";
-import { ProjectActions } from "./ProjectActions";
+import { ProjectsShowcase } from "./ProjectsShowcase";
 
 export const metadata: Metadata = {
   title: "Flovro | AI Voice Agents, Automation & Web Development",
@@ -46,62 +46,26 @@ function FlovroLogo({
   );
 }
 
-const steps = [
+const journeySteps = [
   {
-    title: "MediLink AI",
-    description: (
-      <>
-        A multi-agent healthcare triage platform that coordinates patient
-        intake, medical intelligence, logistics, and doctor-led decisions.
-        <ProjectActions
-          projectTitle="MediLink AI"
-          videoSrc="/projects/medilink-ai.mp4"
-          siteUrl="https://github.com/SydAsim/Medi-link-AI"
-        />
-      </>
-    ),
+    title: "Listen",
+    description:
+      "We map the conversations, hand-offs, and repeated tasks that slow the business down.",
   },
   {
-    title: "YouTube Clone",
-    description: (
-      <>
-        A full-stack video platform built with React, Node.js, Express, MongoDB,
-        Cloudinary, and secure JWT authentication.
-        <ProjectActions
-          projectTitle="YouTube Clone"
-          videoSrc="/projects/youtube-clone.mp4"
-          siteUrl="https://github.com/SydAsim/Youtube-clone"
-        />
-      </>
-    ),
+    title: "Connect",
+    description:
+      "We join the tools your team already uses into one clear, dependable operating flow.",
   },
   {
-    title: "Orlando Dental Care",
-    description: (
-      <>
-        A modern dental web experience designed to turn patient interest into
-        appointment requests through clear messaging and polished interactions.
-        <ProjectActions
-          projectTitle="Orlando Dental Care"
-          videoSrc="/projects/orlando-dental.mp4"
-          siteUrl="https://github.com/SydAsim/orlando-dental-care-v2"
-        />
-      </>
-    ),
+    title: "Automate",
+    description:
+      "AI agents and intelligent workflows handle the routine work while people stay in control.",
   },
   {
-    title: "VisaGuard AI",
-    description: (
-      <>
-        An AI-assisted social-risk analysis product that helps review digital
-        signals and organize evidence for clearer visa-readiness decisions.
-        <ProjectActions
-          projectTitle="VisaGuard AI"
-          videoSrc="/projects/visaguard-ai.mp4"
-          siteUrl="https://github.com/SydAsim/Visaguardai_Upwork"
-        />
-      </>
-    ),
+    title: "Scale",
+    description:
+      "Every touchpoint becomes faster, more consistent, and ready to grow with the business.",
   },
 ];
 
@@ -350,7 +314,7 @@ export default function Home() {
               <div className="hero__scroll-btn">
                 <span>
                   <span className="hsbtn-in">
-                    scroll to explore selected projects
+                    scroll to explore the Flovro system
                   </span>
                 </span>
               </div>
@@ -358,10 +322,14 @@ export default function Home() {
 
             <div className="hero-spacer" />
 
-            <section className="flow" id="projects" aria-label="Selected projects">
+            <section
+              className="flow"
+              id="hero-journey"
+              aria-label="How the Flovro system works"
+            >
               <div className="flow__wrapper">
                 <div className="flow__steps">
-                  {steps.map((step, index) => (
+                  {journeySteps.map((step, index) => (
                     <div
                       className="flow__step"
                       data-step={index + 1}
@@ -390,6 +358,8 @@ export default function Home() {
                 </div>
               </div>
             </section>
+
+            <ProjectsShowcase />
 
             <section className="services-section" id="services">
               <div className="features__sticky">
