@@ -47,15 +47,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="preload">
+    <html lang="en">
       <head>
         <link rel="stylesheet" href="/_astro/apply.B-bC7KCE.css" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html:
-              "requestAnimationFrame(()=>requestAnimationFrame(()=>document.documentElement.classList.remove('preload')));",
-          }}
-        />
       </head>
       <body
         style={{

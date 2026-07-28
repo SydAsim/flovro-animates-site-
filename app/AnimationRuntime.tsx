@@ -13,23 +13,13 @@ export function AnimationRuntime() {
       "(prefers-reduced-motion: reduce)",
     ).matches;
     const coarsePointer = window.matchMedia("(pointer: coarse)").matches;
-    const connection = (
-      navigator as Navigator & {
-        connection?: { saveData?: boolean };
-        deviceMemory?: number;
-      }
-    ).connection;
-    const deviceMemory = (
-      navigator as Navigator & { deviceMemory?: number }
-    ).deviceMemory;
-    const forcedLite = new URLSearchParams(window.location.search).has("lite");
+    const params = new URLSearchParams(window.location.search);
+    const allowCinematicRuntime = params.has("cinematic");
     const useLiteRuntime =
-      forcedLite ||
+      !allowCinematicRuntime ||
       reducedMotion ||
       coarsePointer ||
-      window.innerWidth < 1024 ||
-      connection?.saveData === true ||
-      (typeof deviceMemory === "number" && deviceMemory <= 4);
+      window.innerWidth < 1024;
 
     let hideLoaderTimer: number | undefined;
     let runtimeTimer: number | undefined;

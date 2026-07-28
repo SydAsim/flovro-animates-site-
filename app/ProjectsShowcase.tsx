@@ -1,7 +1,7 @@
 "use client";
 
-import type { CSSProperties } from "react";
-import { useEffect, useRef, useState } from "react";
+import type { CSSProperties, KeyboardEvent } from "react";
+import { useState } from "react";
 import { ProjectActions } from "./ProjectActions";
 
 const projects = [
@@ -9,34 +9,34 @@ const projects = [
     title: "MediLink AI",
     eyebrow: "Multi-agent healthcare",
     description:
-      "A coordinated patient-triage system that connects intake, clinical intelligence, logistics, and doctor-led decisions.",
+      "A coordinated patient-triage system connecting intake, clinical intelligence, logistics, and doctor-led decisions.",
     image: "/projects/medilink-placeholder.webp",
     video: "/projects/medilink-ai.mp4",
     url: "https://github.com/SydAsim/Medi-link-AI",
     tags: ["AI agents", "Healthcare", "Automation"],
-    accent: "#46d6ff",
+    accent: "#8dff52",
   },
   {
     title: "YouTube Clone",
     eyebrow: "Full-stack platform",
     description:
-      "A secure video platform with uploads, cloud media, authentication, discovery, and a modern responsive viewing experience.",
+      "A secure video platform with uploads, cloud media, authentication, discovery, and a responsive viewing experience.",
     image: "/projects/youtube-placeholder.webp",
     video: "/projects/youtube-clone.mp4",
     url: "https://github.com/SydAsim/Youtube-clone",
     tags: ["React", "Node.js", "MongoDB"],
-    accent: "#ff476f",
+    accent: "#ff536f",
   },
   {
-    title: "Orlando Dental Care",
+    title: "Orlando Dental",
     eyebrow: "Conversion-focused website",
     description:
-      "A polished patient experience that turns service discovery into clear, confident appointment requests.",
+      "A polished patient journey that turns service discovery into clear, confident appointment requests.",
     image: "/projects/dental-placeholder.webp",
     video: "/projects/orlando-dental.mp4",
     url: "https://github.com/SydAsim/orlando-dental-care-v2",
     tags: ["UX strategy", "Web design", "Conversion"],
-    accent: "#73f0d2",
+    accent: "#57e7d1",
   },
   {
     title: "VisaGuard AI",
@@ -47,138 +47,161 @@ const projects = [
     video: "/projects/visaguard-ai.mp4",
     url: "https://github.com/SydAsim/Visaguardai_Upwork",
     tags: ["AI analysis", "MERN", "Decision support"],
-    accent: "#a98cff",
+    accent: "#b28cff",
   },
 ];
 
+function circularOffset(index: number, active: number) {
+  let offset = index - active;
+  const midpoint = projects.length / 2;
+
+  if (offset > midpoint) offset -= projects.length;
+  if (offset < -midpoint) offset += projects.length;
+
+  return offset;
+}
+
 export function ProjectsShowcase() {
   const [activeProject, setActiveProject] = useState(0);
-  const panelsRef = useRef<HTMLDivElement>(null);
+  const active = projects[activeProject];
 
-  useEffect(() => {
-    const panels = panelsRef.current?.querySelectorAll<HTMLElement>(
-      "[data-project-index]",
+  const move = (direction: number) => {
+    setActiveProject(
+      (current) => (current + direction + projects.length) % projects.length,
     );
+  };
 
-    if (!panels?.length) {
-      return;
+  const handleKeyboard = (event: KeyboardEvent<HTMLElement>) => {
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      move(-1);
     }
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-        if (visible) {
-          setActiveProject(
-            Number((visible.target as HTMLElement).dataset.projectIndex ?? 0),
-          );
-        }
-      },
-      {
-        rootMargin: "-24% 0px -46% 0px",
-        threshold: [0.15, 0.35, 0.6],
-      },
-    );
-
-    panels.forEach((panel) => observer.observe(panel));
-    return () => observer.disconnect();
-  }, []);
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      move(1);
+    }
+  };
 
   return (
-    <section className="projects-showcase" id="projects">
-      <div className="projects-showcase__signal" aria-hidden="true">
-        <span />
+    <section
+      className="projects-showcase"
+      id="projects"
+      aria-labelledby="projects-title"
+      onKeyDown={handleKeyboard}
+    >
+      <div className="projects-showcase__ambient" aria-hidden="true">
         <span />
         <span />
       </div>
 
       <header className="projects-showcase__header">
         <p className="projects-showcase__eyebrow">Selected work / 2025—2026</p>
-        <h2>
-          Systems that move
-          <br /> businesses forward.
+        <h2 id="projects-title">
+          Projects in
+          <br /> motion.
         </h2>
-        <p className="projects-showcase__intro">
-          AI, automation, and digital products designed as one connected
-          experience.
+        <p>
+          Explore AI, automation, and digital products built as connected
+          business experiences.
         </p>
       </header>
 
-      <div className="projects-showcase__scroll">
-        <div className="projects-showcase__media" aria-hidden="true">
-          <div className="projects-showcase__frame">
-            {projects.map((project, index) => (
-              <img
-                key={project.title}
-                src={project.image}
-                alt=""
-                width="1200"
-                height="800"
-                loading="lazy"
-                decoding="async"
+      <div
+        className="project-orbit"
+        role="region"
+        aria-label="Flovro project carousel"
+        aria-roledescription="carousel"
+      >
+        <div className="project-orbit__stage">
+          <span className="project-orbit__beam" aria-hidden="true" />
+          {projects.map((project, index) => {
+            const offset = circularOffset(index, activeProject);
+            const distance = Math.abs(offset);
+            const style = {
+              "--card-offset": offset,
+              "--card-distance": distance,
+              "--card-lift": `${distance * 34}px`,
+              "--card-accent": project.accent,
+              zIndex: projects.length - distance,
+            } as CSSProperties;
+
+            return (
+              <button
                 className={
                   index === activeProject
-                    ? "projects-showcase__image is-active"
-                    : "projects-showcase__image"
+                    ? "project-orbit__card is-active"
+                    : "project-orbit__card"
                 }
-              />
-            ))}
-            <div className="projects-showcase__frame-meta">
-              <span>FLOVRO / PROJECT SIGNAL</span>
-              <span>
-                {String(activeProject + 1).padStart(2, "0")} /{" "}
-                {String(projects.length).padStart(2, "0")}
-              </span>
-            </div>
-          </div>
+                type="button"
+                aria-label={`Show ${project.title}`}
+                aria-pressed={index === activeProject}
+                onClick={() => setActiveProject(index)}
+                style={style}
+                key={project.title}
+              >
+                <img
+                  src={project.image}
+                  alt=""
+                  width="1200"
+                  height="800"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span className="project-orbit__shade" />
+                <span className="project-orbit__card-copy">
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <strong>{project.title}</strong>
+                </span>
+              </button>
+            );
+          })}
         </div>
 
-        <div className="projects-showcase__panels" ref={panelsRef}>
-          {projects.map((project, index) => (
-            <article
-              className={
-                index === activeProject
-                  ? "project-panel is-active"
-                  : "project-panel"
-              }
-              data-project-index={index}
-              key={project.title}
-              onFocus={() => setActiveProject(index)}
-              onMouseEnter={() => setActiveProject(index)}
-              style={{ "--project-accent": project.accent } as CSSProperties}
-              tabIndex={0}
-            >
-              <img
-                src={project.image}
-                alt={`${project.title} placeholder preview`}
-                width="1200"
-                height="800"
-                loading="lazy"
-                decoding="async"
-                className="project-panel__mobile-image"
-              />
-              <div className="project-panel__topline">
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <span>{project.eyebrow}</span>
-              </div>
-              <h3>{project.title}</h3>
-              <p>{project.description}</p>
-              <ul aria-label={`${project.title} technologies`}>
-                {project.tags.map((tag) => (
-                  <li key={tag}>{tag}</li>
-                ))}
-              </ul>
-              <ProjectActions
-                projectTitle={project.title}
-                videoSrc={project.video}
-                siteUrl={project.url}
-              />
-            </article>
-          ))}
+        <div className="project-orbit__controls">
+          <button
+            type="button"
+            onClick={() => move(-1)}
+            aria-label="Previous project"
+          >
+            <span aria-hidden="true">←</span>
+          </button>
+          <p aria-live="polite">
+            {String(activeProject + 1).padStart(2, "0")}
+            <span> / {String(projects.length).padStart(2, "0")}</span>
+          </p>
+          <button
+            type="button"
+            onClick={() => move(1)}
+            aria-label="Next project"
+          >
+            <span aria-hidden="true">→</span>
+          </button>
         </div>
       </div>
+
+      <article
+        className="project-orbit__detail"
+        style={{ "--card-accent": active.accent } as CSSProperties}
+      >
+        <div>
+          <p>{active.eyebrow}</p>
+          <h3>{active.title}</h3>
+        </div>
+        <div className="project-orbit__summary">
+          <p>{active.description}</p>
+          <ul aria-label={`${active.title} technologies`}>
+            {active.tags.map((tag) => (
+              <li key={tag}>{tag}</li>
+            ))}
+          </ul>
+          <ProjectActions
+            projectTitle={active.title}
+            videoSrc={active.video}
+            siteUrl={active.url}
+          />
+        </div>
+      </article>
     </section>
   );
 }
